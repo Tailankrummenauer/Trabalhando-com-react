@@ -3,8 +3,9 @@ import './style.css'
 
 
 const TamanhoImg = (props) =>{
-    return (
-    <img className="imagem" src={props.img_url}></img>
+    return (        
+    <img className={props.imgHeight ? "imagem_grande" : "imagem"} src={props.img_url}></img>
+
    
     
     )
