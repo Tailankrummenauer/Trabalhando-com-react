@@ -48,12 +48,7 @@ class Planet extends React.Component {
                
                )}
 
-                </ul>
-                     
-
-
-
-              
+                </ul>             
             </div>
         )
     }
