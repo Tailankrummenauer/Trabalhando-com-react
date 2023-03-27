@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Planet from "./planet";
 
 
@@ -9,17 +9,16 @@ async function getPlanet() {
     return data;
 }
 
-// componentDidMount() {
-//     getPlanet().then(data => {
-//         this.setState(state => ({
-//             planets: data['planets']
-//         }))
-//     })
-// }
 
 
 const Planets = () => {
     const [planets, setPlanets] = useState([])
+
+    useEffect(() => {
+        getPlanet().then(data => {
+            setPlanets(data['planets'])
+        })
+    }, [] /*vai rodar apenas quando for iniciado [] se quiser que seja atualizado toda vez que algum estado for alterado [planets]*/ )
 
     const removeLast = () => {
         let new_planets = [...planets];
