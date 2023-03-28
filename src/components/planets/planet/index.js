@@ -16,30 +16,33 @@ const Planet = (props) =>{
     const [satellites, setSatellites] = useState([])
 
     useEffect(() => {
-        getSatellite().then(data => {
+        getSatellite(props.id).then(data => {
             setSatellites(data['satellites'])
         })
-    },[])
+    }, [])
 
         let title
         if (props.title_with_underline)
             title = <h4><u>{props.title}</u></h4>
         else
             title = <h4>{props.title}</h4>
+
+
         return (
             <div>
-               <hr />
                 {title}
                 <ComponentsWithLink link={props.link} description={props.description} />
                 <TamanhoImg img_url={props.img_url} imgHeight={props.imgHeight} />
                 <h4>Satelites</h4>
+               <ul>
 
-               <ul>{satellites.map((satellite, index) => 
+                {console.log(satellites.map)}
+                {satellites.map((satellite, index) => 
                <li key={index}>{satellite.name}</li>
-               
-               )}
+                )}
+                </ul>   
 
-                </ul>             
+                <hr />          
             </div>
         )
     }

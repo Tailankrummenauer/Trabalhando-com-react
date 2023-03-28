@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Planet from "./planet";
+import Form from "./form";
 
 
 
@@ -20,23 +21,18 @@ const Planets = () => {
         })
     }, [] /*vai rodar apenas quando for iniciado [] se quiser que seja atualizado toda vez que algum estado for alterado [planets]*/ )
 
-    const removeLast = () => {
-        let new_planets = [...planets];
-        new_planets.pop();
-        setPlanets(new_planets);
+
+    const addPlanet = (new_planet) =>{
+        setPlanets([...planets, new_planet])
     }
 
-    const duplicateLastPlanet = () => {
-        let last_planet = planets[planets.length - 1]
-        setPlanets([...planets, last_planet])
 
-    }
     return (
         <div>
             <h3>Planet List</h3>
-            <button onClick={removeLast}>Remove Last</button>
-            <button onClick={duplicateLastPlanet}>Duplicate planet</button>
+            <hr />
 
+            <Form addPlanet={addPlanet}/>
 
             {planets.map((planets, index) =>
                 <Planet
@@ -55,3 +51,45 @@ const Planets = () => {
 }
 
 export default Planets; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // const removeLast = () => {
+    //     let new_planets = [...planets];
+    //     new_planets.pop();
+    //     setPlanets(new_planets);
+    // }
+
+    // const duplicateLastPlanet = () => {
+    //     let last_planet = planets[planets.length - 1]
+    //     setPlanets([...planets, last_planet])
+
+    // }
+
+    //   {/* <button onClick={removeLast}>Remove Last</button>
+    //         <button onClick={duplicateLastPlanet}>Duplicate planet</button> */}
+
